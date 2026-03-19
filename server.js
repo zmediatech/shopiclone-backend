@@ -81,7 +81,15 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-    origin: ['https://shopiclone-clientsite.vercel.app', 'http://localhost:3000'], // Add localhost for development
+    origin: [
+        'https://shopiclone-clientsite.vercel.app',
+        'http://localhost:3000',
+        'http://localhost:3004',  // Add this line for your current frontend port
+        'http://localhost:3001',  // Common alternative ports
+        'http://localhost:3002',
+        'http://localhost:3003'
+        //add all the ports where the frontend is running
+    ],
     credentials: true,
     optionsSuccessStatus: 200
 };
@@ -111,8 +119,25 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Connect to MongoDB (but don't start server)
-connectDB().catch(console.error);
+// Database connection middleware (ensures DB is connected before any route is processed)
+// Database connection middleware (ensures DB is connected before any route is processed)
+app.use(async (req, res, next) => {
+    // Skip DB connection for health checks and static files
+    if (req.path === '/api/health' || req.path.startsWith('/uploads')) {
+        return next();
+    }
+
+    try {
+        await connectDB();
+        next();
+    } catch (error) {
+        console.error('❌ Database connection middleware error:', error);
+        res.status(500).json({
+            message: 'Database connection failed',
+            error: process.env.NODE_ENV === 'production' ? null : error.message
+        });
+    }
+});
 
 // Routes
 app.use('/api', routes);
@@ -138,11 +163,18 @@ app.use((err, req, res, next) => {
 // For local development
 if (process.env.NODE_ENV !== 'production') {
     const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
+    app.listen(PORT, async () => {
         console.log(`ShopiClone Backend running on port ${PORT}`);
         console.log(`CORS enabled for: ${corsOptions.origin.join(', ')}`);
-        const { startAbandonedCheckoutJob } = require('./utils/abandonedCheckoutJob');
-        startAbandonedCheckoutJob();
+
+        try {
+            // Ensure DB is connected before starting background jobs
+            await connectDB();
+            const { startAbandonedCheckoutJob } = require('./utils/abandonedCheckoutJob');
+            startAbandonedCheckoutJob();
+        } catch (error) {
+            console.error('❌ Failed to start background jobs:', error.message);
+        }
     });
 }
 
