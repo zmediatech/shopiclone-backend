@@ -79,12 +79,19 @@ const routes = require('./routes');
 
 const app = express();
 
+// CORS configuration
+const corsOptions = {
+    origin: ['https://shopiclone-clientsite.vercel.app', 'http://localhost:3000'], // Add localhost for development
+    credentials: true,
+    optionsSuccessStatus: 200
+};
+
 // Middleware
 // Use raw body for Stripe webhooks BEFORE general JSON parsing
 app.use('/api/payment/webhook/stripe', express.raw({ type: 'application/json' }));
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions)); // Configure CORS here with options
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads')); // Serve uploaded files
 
@@ -95,14 +102,11 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'none'
+        sameSite: 'none',
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
     }
 }));
 
-app.cors({
-    origin: 'https://shopiclone-clientsite.vercel.app',
-    credentials: true
-});
 // Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
@@ -136,6 +140,7 @@ if (process.env.NODE_ENV !== 'production') {
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
         console.log(`ShopiClone Backend running on port ${PORT}`);
+        console.log(`CORS enabled for: ${corsOptions.origin.join(', ')}`);
         const { startAbandonedCheckoutJob } = require('./utils/abandonedCheckoutJob');
         startAbandonedCheckoutJob();
     });
