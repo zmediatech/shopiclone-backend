@@ -1,0 +1,42 @@
+
+const express = require('express');
+const router = express.Router();
+const authRoutes = require('./authRoutes');
+const storeRoutes = require('./storeRoutes');
+const productRoutes = require('./productRoutes');
+const orderRoutes = require('./orderRoutes');
+const userRoutes = require('./userRoutes');
+const collectionRoutes = require('./collectionRoutes');
+const discountRoutes = require('./discountRoutes');
+const aiRoutes = require('./aiRoutes');
+const pageRoutes = require('./pageRoutes');
+const navigationRoutes = require('./navigationRoutes');
+const contentRoutes = require('./contentRoutes');
+const marketingRoutes = require('./marketingRoutes');
+const analyticsRoutes = require('./analyticsRoutes');
+const returnRoutes = require('./returnRoutes');
+const appRoutes = require('./appRoutes');
+const paymentRoutes = require('./paymentRoutes');
+const superAdminRoutes = require('./superAdminRoutes');
+const { getPackages } = require('../controllers/superAdminController');
+
+router.get('/packages', getPackages);
+router.use('/auth', authRoutes);
+router.use('/store', storeRoutes);
+router.use('/products', productRoutes);
+router.use('/orders', orderRoutes);
+router.use('/users', userRoutes);
+router.use('/collections', collectionRoutes);
+router.use('/discounts', discountRoutes);
+router.use('/ai', aiRoutes);
+router.use('/pages', pageRoutes);
+router.use('/navigation', navigationRoutes);
+router.use('/content', contentRoutes);
+router.use('/marketing', marketingRoutes);
+router.use('/analytics', analyticsRoutes);
+router.use('/returns', returnRoutes);
+router.use('/apps', appRoutes);
+router.use('/payment', paymentRoutes);
+router.use('/superadmin', superAdminRoutes);
+
+module.exports = router;

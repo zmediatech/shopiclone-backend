@@ -1,0 +1,17 @@
+Connected to DB
+Total Abandoned Checkout Records: 1
+--- Record ---
+ID: 69819edbb261be6e7cf7567e
+Email: anisuldev@gmail.com
+Status: pending
+Recovery Sent: true
+Recovery Sent At: Tue Feb 03 2026 12:42:51 GMT+0500 (Pakistan Standard Time)
+Created At: Tue Feb 03 2026 12:08:11 GMT+0500 (Pakistan Standard Time)
+Now: Tue Feb 03 2026 12:45:52 GMT+0500 (Pakistan Standard Time)
+Difference (mins): 37.67518333333333
+--- Store Settings ---
+Store Name: EXPERIENCE THE ULTIM
+Automation Enabled: true
+SMTP Host: mail.zmedia.com.pk
+From Email: no-reply@store.com
+User: anis@zmedia.com.pk

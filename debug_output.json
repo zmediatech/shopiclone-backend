@@ -1,0 +1,358 @@
+[
+  {
+    "_id": "Storage",
+    "count": 44
+  },
+  {
+    "_id": "Moisturizers and Cream",
+    "count": 36
+  },
+  {
+    "_id": "Shampoo & Conditioners",
+    "count": 30
+  },
+  {
+    "_id": "Gaming Headsets",
+    "count": 23
+  },
+  {
+    "_id": "Cables & Converters",
+    "count": 22
+  },
+  {
+    "_id": "Facial Cleansers",
+    "count": 19
+  },
+  {
+    "_id": "Serum & Essence",
+    "count": 17
+  },
+  {
+    "_id": "Makeup Palettes & Sets",
+    "count": 15
+  },
+  {
+    "_id": "Face",
+    "count": 14
+  },
+  {
+    "_id": "Arts & Crafts for Kids",
+    "count": 11
+  },
+  {
+    "_id": "Health Accessories",
+    "count": 11
+  },
+  {
+    "_id": "Face Mask & Packs",
+    "count": 10
+  },
+  {
+    "_id": "Water Dispensers",
+    "count": 10
+  },
+  {
+    "_id": "Power Banks",
+    "count": 10
+  },
+  {
+    "_id": "Docks & Stands",
+    "count": 9
+  },
+  {
+    "_id": "Wall Mounts & Protectors",
+    "count": 9
+  },
+  {
+    "_id": "Shaving & Grooming",
+    "count": 8
+  },
+  {
+    "_id": "Televisions",
+    "count": 7
+  },
+  {
+    "_id": "Irons",
+    "count": 7
+  },
+  {
+    "_id": "Smart Phones",
+    "count": 7
+  },
+  {
+    "_id": "Air & Deep Fryers",
+    "count": 7
+  },
+  {
+    "_id": "Learning & Education",
+    "count": 7
+  },
+  {
+    "_id": "Camera Accessories",
+    "count": 6
+  },
+  {
+    "_id": "Face Scrubs & Exfoliators",
+    "count": 6
+  },
+  {
+    "_id": "Gaming Accessories",
+    "count": 6
+  },
+  {
+    "_id": "Wall Chargers",
+    "count": 6
+  },
+  {
+    "_id": "Men's Care",
+    "count": 6
+  },
+  {
+    "_id": "Dishwashers",
+    "count": 5
+  },
+  {
+    "_id": "Headphones & Headsets Access.",
+    "count": 5
+  },
+  {
+    "_id": "Tripods & Monopods",
+    "count": 4
+  },
+  {
+    "_id": "Skin Care",
+    "count": 4
+  },
+  {
+    "_id": "Wired Headsets",
+    "count": 4
+  },
+  {
+    "_id": "In-Ear Headphones",
+    "count": 4
+  },
+  {
+    "_id": "Lenses",
+    "count": 4
+  },
+  {
+    "_id": "Over-The-Ear Headphones",
+    "count": 4
+  },
+  {
+    "_id": "Car Chargers",
+    "count": 4
+  },
+  {
+    "_id": "Fragrances",
+    "count": 4
+  },
+  {
+    "_id": "Like New Laptops",
+    "count": 4
+  },
+  {
+    "_id": "Like New Smartwatches",
+    "count": 4
+  },
+  {
+    "_id": "Batteries",
+    "count": 4
+  },
+  {
+    "_id": "Wireless Earbuds",
+    "count": 3
+  },
+  {
+    "_id": "Highchairs & Booster Seats",
+    "count": 3
+  },
+  {
+    "_id": "Water Heater",
+    "count": 3
+  },
+  {
+    "_id": "Gaming Mouse",
+    "count": 3
+  },
+  {
+    "_id": "Toothbrushes & Toothpaste",
+    "count": 3
+  },
+  {
+    "_id": "Kitchen Appliances",
+    "count": 3
+  },
+  {
+    "_id": "Parts & Tools",
+    "count": 3
+  },
+  {
+    "_id": "Vacuum Cleaner",
+    "count": 3
+  },
+  {
+    "_id": "Memory Cards",
+    "count": 3
+  },
+  {
+    "_id": "Portable Speakers",
+    "count": 2
+  },
+  {
+    "_id": "Pretend Play",
+    "count": 2
+  },
+  {
+    "_id": "Fidget Spinners",
+    "count": 2
+  },
+  {
+    "_id": "Tablet Accessories",
+    "count": 2
+  },
+  {
+    "_id": "IP Security Cameras",
+    "count": 2
+  },
+  {
+    "_id": "Juicer & Fruit Extraction",
+    "count": 2
+  },
+  {
+    "_id": "Lip Balm & Treatment",
+    "count": 2
+  },
+  {
+    "_id": "Girls (Under 3 Years)",
+    "count": 2
+  },
+  {
+    "_id": "Grooming & Healthcare Kits",
+    "count": 2
+  },
+  {
+    "_id": "Oven",
+    "count": 2
+  },
+  {
+    "_id": "Puzzle & Boardgames",
+    "count": 2
+  },
+  {
+    "_id": "Breast Pumps",
+    "count": 2
+  },
+  {
+    "_id": "Rice Cooker",
+    "count": 2
+  },
+  {
+    "_id": "Blender, Mixer & Grinder",
+    "count": 2
+  },
+  {
+    "_id": "Newborn",
+    "count": 2
+  },
+  {
+    "_id": "Processors",
+    "count": 1
+  },
+  {
+    "_id": "Monitors & Accessories",
+    "count": 1
+  },
+  {
+    "_id": "Car Mounts",
+    "count": 1
+  },
+  {
+    "_id": "Live Sound & Stage Equipment",
+    "count": 1
+  },
+  {
+    "_id": "Action Camera Accessories",
+    "count": 1
+  },
+  {
+    "_id": "TV Remote Controllers",
+    "count": 1
+  },
+  {
+    "_id": "Toner & Mists",
+    "count": 1
+  },
+  {
+    "_id": "Electric Kettle",
+    "count": 1
+  },
+  {
+    "_id": "Soaps, Cleansers & Bodywash",
+    "count": 1
+  },
+  {
+    "_id": "Projectors",
+    "count": 1
+  },
+  {
+    "_id": "TV Accessories",
+    "count": 1
+  },
+  {
+    "_id": "Medical Supplies",
+    "count": 1
+  },
+  {
+    "_id": "Sewing Machine",
+    "count": 1
+  },
+  {
+    "_id": "Blocks & Building toys",
+    "count": 1
+  },
+  {
+    "_id": "Storage for Mac",
+    "count": 1
+  },
+  {
+    "_id": "Washcloths & Towels",
+    "count": 1
+  },
+  {
+    "_id": "Lighting & Studio Equipment",
+    "count": 1
+  },
+  {
+    "_id": "Microwave",
+    "count": 1
+  },
+  {
+    "_id": "Nipple Care",
+    "count": 1
+  },
+  {
+    "_id": "Cables",
+    "count": 1
+  },
+  {
+    "_id": "Toys & Games",
+    "count": 1
+  },
+  {
+    "_id": "Mobile Accessories",
+    "count": 1
+  },
+  {
+    "_id": "Personal Care",
+    "count": 1
+  },
+  {
+    "_id": "External Hard Drives",
+    "count": 1
+  },
+  {
+    "_id": "Nebulizer & Aspirators",
+    "count": 1
+  }
+]
