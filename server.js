@@ -99,6 +99,10 @@ app.use(session({
     }
 }));
 
+app.cors({
+    origin: 'https://shopiclone-clientsite.vercel.app',
+    credentials: true
+});
 // Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
