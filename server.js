@@ -1,4 +1,4 @@
-
+// serverless-server.js
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -7,26 +7,23 @@ const session = require('express-session');
 const passport = require('./config/passport-config');
 const { connectDB } = require('./config/db');
 const routes = require('./routes');
+const serverless = require('serverless-http');
 
 const app = express();
 
 // Middleware
-// Use raw body for Stripe webhooks BEFORE general JSON parsing
 app.use('/api/payment/webhook/stripe', express.raw({ type: 'application/json' }));
-
 app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
-app.use('/uploads', express.static('uploads')); // Serve uploaded files
+app.use('/uploads', express.static('uploads'));
 
-// Session Middleware
 app.use(session({
     secret: process.env.SESSION_SECRET || 'secret',
     resave: false,
     saveUninitialized: false
 }));
 
-// Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -34,9 +31,9 @@ app.use(passport.session());
 app.use('/api', routes);
 
 app.get('/', (req, res) => {
-    res.send(`ShopiClone Backend API is running!, node version: ${process.version}`
-    );
+    res.send(`ShopiClone Backend API is running!, node version: ${process.version}`);
 });
+
 // Global Error Handler
 app.use((err, req, res, next) => {
     console.error(err.stack);
@@ -46,23 +43,8 @@ app.use((err, req, res, next) => {
     });
 });
 
-const PORT = process.env.PORT || 5000;
+// Connect to MongoDB (once at cold start)
+connectDB().then(() => console.log('MongoDB Connected'));
 
-const { startAbandonedCheckoutJob } = require('./utils/abandonedCheckoutJob');
-
-const startServer = async () => {
-    try {
-        await connectDB();
-
-        app.listen(PORT, () => {
-            console.log(`ShopiClone Backend running on port ${PORT}`);
-            if (process.env.NODE_ENV !== 'test') {
-                startAbandonedCheckoutJob();
-            }
-        });
-    } catch (error) {
-        console.error('Failed to start server:', error);
-    }
-};
-
-startServer();
+// Export handler for Vercel
+module.exports.handler = serverless(app);
