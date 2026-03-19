@@ -26,7 +26,6 @@ const getStripeInstance = async () => {
 // @route   POST /api/payments/create-checkout-session
 // @access  Public (or semi-public with temporary token)
 exports.createCheckoutSession = async (req, res) => {
-    fs.appendFileSync('controller_hits.txt', `${new Date().toISOString()} - stripeController hit\n`);
     console.log('DEBUG: stripeController.createCheckoutSession hit');
     console.log('DEBUG: req.body:', JSON.stringify(req.body, null, 2));
     try {

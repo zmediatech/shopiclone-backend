@@ -5,7 +5,6 @@ const Order = require('../models/Order');
 
 // Create Stripe checkout session
 exports.createCheckoutSession = async (req, res) => {
-    fs.appendFileSync('controller_hits.txt', `${new Date().toISOString()} - paymentController hit\n`);
     console.log('DEBUG: paymentController.createCheckoutSession hit');
     console.log('DEBUG: req.body:', JSON.stringify(req.body, null, 2));
     try {
