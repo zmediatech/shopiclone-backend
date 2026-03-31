@@ -81,15 +81,19 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-    origin: [
-        'https://shopiclone-clientsite.vercel.app',
-        'http://localhost:3000',
-        'http://localhost:3004',  // Add this line for your current frontend port
-        'http://localhost:3001',  // Common alternative ports
-        'http://localhost:3002',
-        'http://localhost:3003'
-        //add all the ports where the frontend is running
-    ],
+    origin: function (origin, callback) {
+        // Allow all origins in production if needed, or stick to a whitelist
+        // For development, allow any localhost subdomain or port
+        if (!origin ||
+            origin.startsWith('http://localhost') ||
+            origin.endsWith('.localhost:3004') ||
+            origin.endsWith('.localhost:3000') ||
+            origin.includes('shopiclone-clientsite.vercel.app')) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
     optionsSuccessStatus: 200
 };
@@ -119,7 +123,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Database connection middleware (ensures DB is connected before any route is processed)
 // Database connection middleware (ensures DB is connected before any route is processed)
 app.use(async (req, res, next) => {
     // Skip DB connection for health checks and static files
@@ -165,7 +168,7 @@ if (process.env.NODE_ENV !== 'production') {
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, async () => {
         console.log(`ShopiClone Backend running on port ${PORT}`);
-        console.log(`CORS enabled for: ${corsOptions.origin.join(', ')}`);
+        console.log(`CORS enabled for dynamic origin validation.`);
 
         try {
             // Ensure DB is connected before starting background jobs

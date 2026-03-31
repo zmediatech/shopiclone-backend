@@ -116,6 +116,20 @@ exports.createStore = async (req, res) => {
             theme: theme || DEFAULT_THEME,
             subscription: Object.keys(subscription).length > 0 ? subscription : undefined
         });
+
+        // Link payment to store if session was used
+        if (req.body.sessionId) {
+            try {
+                const Payment = require('../models/Payment');
+                await Payment.findOneAndUpdate(
+                    { sessionId: req.body.sessionId },
+                    { storeId: store._id }
+                );
+                console.log(`🔗 Linked payment session ${req.body.sessionId} to new store ${store._id}`);
+            } catch (payErr) {
+                console.error('Failed to link payment to store:', payErr);
+            }
+        }
         // Upgrade user to admin
         await User.findByIdAndUpdate(req.user.id, { role: 'admin' });
         res.status(201).json(store);
@@ -177,6 +191,20 @@ exports.updateStore = async (req, res) => {
             updateData,
             { new: true }
         );
+
+        // Link payment to store if session was used during update
+        if (req.body.sessionId) {
+            try {
+                const Payment = require('../models/Payment');
+                await Payment.findOneAndUpdate(
+                    { sessionId: req.body.sessionId },
+                    { storeId: updatedStore._id }
+                );
+                console.log(`🔗 Linked payment session ${req.body.sessionId} to updated store ${updatedStore._id}`);
+            } catch (payErr) {
+                console.error('Failed to link payment to store during update:', payErr);
+            }
+        }
         res.json(updatedStore);
     } catch (error) {
         res.status(500).json({ message: error.message });
